@@ -23,7 +23,7 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         if #available(iOS 10.0, *) {
             // This causes constaint errors.
 //            collectionViewFlowLayout.itemSize = UICollectionViewFlowLayoutAutomaticSize
-//            collectionViewFlowLayout.estimatedItemSize = CGSize(width: 300, height: 50)
+            collectionViewFlowLayout.estimatedItemSize = CGSize(width: 300, height: 50)
         } else {
             // Fallback on earlier versions
         }
@@ -41,7 +41,9 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         guard let itemCell = cell as? ItemCell else {
             return cell
         }
-
+      
+        itemCell.label.preferredMaxLayoutWidth = collectionView.frame.size.width // tweak as needed
+      
         if indexPath.row % 2 == 0 {
             itemCell.label.text = "blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah"
         } else {
